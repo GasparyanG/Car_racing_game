@@ -18,5 +18,5 @@ class UpdaterInHardRoad(Updater):
 
 
 class UpdaterInEasyRoad(Updater):
-    def update(self, speed):
+    def update(self, speed, wheel_type):
         self.map.lenght = self.map.length - speed

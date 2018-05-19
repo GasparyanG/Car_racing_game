@@ -9,6 +9,8 @@ class EngineDecorator:
         self.product_to_decorate = product_to_decorate
         self.update_power = None  
 
+    # Templete method, which will be changed by every derived class
+    # if there is any change made
     def speed_generator(self):
         self.set_update_power()
         return self.random_generator_of_power()
@@ -42,6 +44,7 @@ class EnginePower(EngineDecorator):
 
     def set_update_power(self):
         self.update_power = 15  
+        
 
 class EngineSmoothness(EngineDecorator):
     def turn_left(self):

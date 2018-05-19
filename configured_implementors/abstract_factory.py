@@ -1,5 +1,4 @@
-from car_notifier import NotifierInHardRoad, NotifierInEasyRoad
-from map_updater import UpdaterInHardRoad, UpdaterInEasyRoad
+from configured_implementors import car_notifier, map_updater 
 
 class AbstractFactory:
     def is_used(self, comparabel_obect):
@@ -17,10 +16,10 @@ class HardGame(AbstractFactory):
         return comparabel_obect == "1" 
 
     def notify_about_changes(self):
-        return NotifierInHardRoad
+        return car_notifier.NotifierInHardRoad
 
     def update_the_state(self):
-        return UpdaterInHardRoad
+        return map_updater.UpdaterInHardRoad
 
 
 class EasyGame(AbstractFactory):
@@ -28,7 +27,7 @@ class EasyGame(AbstractFactory):
         return comparabel_obect == "2" 
 
     def notify_about_changes(self):
-        return NotifierInEasyRoad
+        return car_notifier.NotifierInEasyRoad
 
     def update_the_state(self):
-        return UpdaterInEasyRoad    
+        return map_updater.UpdaterInEasyRoad    
