@@ -1,3 +1,9 @@
+# check out data structure module :
+# update method needed to be component of 
+# data structure implementor 
+# more precisely it must implement update method depending
+# on "easy and hard game"!  
+
 class Map:
     def __init__(self, length):
         self.type = None
@@ -10,3 +16,4 @@ class Map:
 
     def update_the_state(self, speed, wheel_type):
         self.updater_of_map.update(speed, wheel_type)
+        
