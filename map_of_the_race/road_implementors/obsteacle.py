@@ -30,7 +30,7 @@ class Obsteacle:
 
     def __str__(self):
         representation = "Obsteacle's type is {}\n".format(type(self).__name__)
-        representation += "reducing_range is {}\n".format(self.reduceing_range)
+        representation += "reducing range is {}\n".format(self.reduceing_range)
 
         return representation
         
