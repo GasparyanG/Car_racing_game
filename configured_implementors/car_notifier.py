@@ -5,7 +5,6 @@ class Notifier:
     def notify(self, speed):
         raise NotImplementedError()
 
-
 class NotifierInHardRoad(Notifier):
     def notify(self, speed):
         self.car.map.update_the_state(speed, self.car.wheel)

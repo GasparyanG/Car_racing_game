@@ -1,4 +1,5 @@
 # from configured_implementations import abstract_factory
+# speed of a car have to be calculated
 
 class Car:
     def __init__(self, speed, model):
@@ -11,18 +12,18 @@ class Car:
     
     def turn_left(self):
         speed = self.engine.turn_left()      
-        self.notify(speed)   
+        self.notifier(speed)   
 
     def drive_directly(self):
         speed = self.engine.drive_directly()
-        self.notify(speed)
+        self.notifier(speed)
 
     def turn_right(self):
         speed = self.engine.turn_right()
-        self.notify(speed)
+        self.notifier(speed)
 
-    def notify(self, speed):
-        self.notifier.notify(speed)
+    def notify(self):
+        self.notifier.notify(self.speed)
 
     def set_map(self, new_map):
         self.map = new_map
@@ -36,8 +37,4 @@ class Car:
             if type(new_futures) == obsteacle:
                 self.problems += 1
         """        
-        self.engine = new_futures(self.engine)     
-                
-
-
-                
+        self.engine = new_futures(self.engine)                     

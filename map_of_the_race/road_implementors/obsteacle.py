@@ -1,8 +1,8 @@
 from random import choice
 
 class Obsteacle:
-    def __init__(self, product_to_decorate):
-        self.product_to_decorate = product_to_decorate
+    def __init__(self):
+        self.product_to_decorate = None
         self.reduceing_range = None  
 
     def speed_generator(self):
@@ -25,6 +25,15 @@ class Obsteacle:
     def set_reduceing_range(self):
         raise NotImplementedError()
 
+    def set_product_to_decorate(self, new_product):
+        self.product_to_decorate = new_product    
+
+    def __str__(self):
+        representation = "Obsteacle's type is {}\n".format(type(self).__name__)
+        representation += "reducing_range is {}\n".format(self.reduceing_range)
+
+        return representation
+        
 
 class WinterObsteacle(Obsteacle):
     def turn_left(self):
