@@ -5,9 +5,12 @@ from random import choice
 
 # Decorater absract class with its concrete decoraters
 class EngineDecorator:
-    def __init__(self, product_to_decorate):
-        self.product_to_decorate = product_to_decorate
+    def __init__(self):
+        self.product_to_decorate = None
         self.update_power = None  
+
+    def set_product_to_decorate(self, product):
+        self.product_to_decorate = product
 
     # Templete method, which will be changed by every derived class
     # if there is any change made
@@ -31,8 +34,24 @@ class EngineDecorator:
     def set_update_power(self):
         raise NotImplementedError()
         
+    def total_speed(self):
+        try:
+            return self.product_to_decorate.total_speed() + self.update_power
+        except AttributeError:
+            return False
+
+    def __str__(self):
+        representation = "Average increase of this engine is {}\n".format(self.update_power)
+        if self.total_speed():
+            representation += "Total speed is {}\n".format(self.total_speed())
+
+        return representation   
 
 class EnginePower(EngineDecorator):
+    def __init__(self):
+        super().__init__()
+        self.set_update_power() 
+
     def turn_left(self):
         return self.product_to_decorate.turn_left() + self.speed_generator()
 
@@ -47,6 +66,10 @@ class EnginePower(EngineDecorator):
         
 
 class EngineSmoothness(EngineDecorator):
+    def __init__(self):
+        super().__init__()
+        self.set_update_power()
+    
     def turn_left(self):
         return self.product_to_decorate.turn_left() + self.speed_generator()
 

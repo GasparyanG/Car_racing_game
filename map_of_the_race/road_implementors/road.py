@@ -16,6 +16,9 @@ class Road:
         self.road_type = road_supplier.give_a_road_type()
         # this is still not initialized
         self.obsteacle = road_supplier.give_an_obsteacle()
+    
+    def is_obsteacle(self, decorator):
+        return self.obsteacle.is_obsteacle(decorator)
  
     def __str__(self):
         representataion = self.road_type.__str__()

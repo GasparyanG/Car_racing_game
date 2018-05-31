@@ -42,9 +42,7 @@ class SnippetOfTheGame:
 
                 self.map = self.map(length, self.map_road)    
                 
-                print(self.map)
-                is_handled = False
-                break
+                return self.map
 
     def is_valid(self, choice, length_of_road):
         list_of_numbers = []
@@ -75,7 +73,3 @@ class SnippetOfTheGame:
             road_length_offer += "{}){}\n".format(index + 1, length)
             
         return [road_length_offer, length_of_road]
-
-
-starting_point = SnippetOfTheGame()
-starting_point.start()

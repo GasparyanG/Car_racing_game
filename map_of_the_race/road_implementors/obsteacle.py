@@ -1,3 +1,5 @@
+# obsteacle need to have product to decorate becaouse it is a decorator 
+
 from random import choice
 
 class Obsteacle:
@@ -28,6 +30,11 @@ class Obsteacle:
     def set_product_to_decorate(self, new_product):
         self.product_to_decorate = new_product    
 
+    # car object need to know about obsteacle! 
+    def is_obsteacle(self, decorator):
+        if type(decorator) == type(self):
+            return True
+    
     def __str__(self):
         representation = "Obsteacle's type is {}\n".format(type(self).__name__)
         representation += "reducing range is {}\n".format(self.reduceing_range)
@@ -36,6 +43,10 @@ class Obsteacle:
         
 
 class WinterObsteacle(Obsteacle):
+    def __init__(self):
+        super().__init__()
+        self.set_reduceing_range()
+
     def turn_left(self):
         return self.product_to_decorate.turn_left() - self.speed_generator()
 
@@ -46,10 +57,14 @@ class WinterObsteacle(Obsteacle):
         return self.product_to_decorate.turn_right() - self.speed_generator()
 
     def set_reduceing_range(self):
-        self.update_power = 20
+        self.reduceing_range = 20
 
 
 class AutumnObsteacle(Obsteacle):
+    def __init__(self):
+        super().__init__()
+        self.set_reduceing_range()
+
     def turn_left(self):
         return self.product_to_decorate.turn_left() - self.speed_generator()
 
@@ -60,4 +75,4 @@ class AutumnObsteacle(Obsteacle):
         return self.product_to_decorate.turn_right() - self.speed_generator()
 
     def set_reduceing_range(self):
-        self.update_power = 10
+        self.reduceing_range = 10

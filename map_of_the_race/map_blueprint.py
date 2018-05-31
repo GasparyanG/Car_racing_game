@@ -34,6 +34,10 @@ class Map:
     def set_data_structure(self, data_structure):
         self.data_structure = data_structure
 
+    # True will be return if it is an obsteacle!
+    def is_obsteacle(self, decorator):
+        return self.road_type.is_obsteacle(decorator)    
+
     # To choose sth user have to know about "sth's" representation
     def __str__(self):
         representation = "Length of this road is {}\n".format(self.length)
