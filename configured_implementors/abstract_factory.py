@@ -4,7 +4,7 @@ class AbstractFactory:
     def is_used(self, comparabel_obect):
         raise NotImplementedError() 
 
-    def notify_abouti_changes(self):
+    def notify_about_changes(self):
         raise NotImplementedError()
 
     def update_the_state(self):
@@ -18,7 +18,7 @@ class HardGame(AbstractFactory):
     def notify_about_changes(self):
         return car_notifier.NotifierInHardRoad
 
-    def update_the_state(self, map):
+    def update_the_state(self):
         return map_updater.UpdaterInHardRoad
 
 
@@ -29,5 +29,5 @@ class EasyGame(AbstractFactory):
     def notify_about_changes(self):
         return car_notifier.NotifierInEasyRoad
 
-    def update_the_state(self, map):
+    def update_the_state(self):
         return map_updater.UpdaterInEasyRoad    

@@ -26,7 +26,8 @@ class Map:
         self.data_structure = self.road_type.update_data_structure(self.data_structure)
 
     def set_map_updater(self, new_abstract_factory):
-        self.updater_of_map = new_abstract_factory.update_the_state(self)
+        updater = new_abstract_factory.update_the_state()
+        self.updater_of_map = updater(self)
 
     def update_the_state(self, speed, wheel_type):
         self.updater_of_map.update(speed, wheel_type)
@@ -36,7 +37,10 @@ class Map:
 
     # True will be return if it is an obsteacle!
     def is_obsteacle(self, decorator):
-        return self.road_type.is_obsteacle(decorator)    
+        return self.road_type.is_obsteacle(decorator)
+
+    def return_road_type(self):
+        return self.road_type.return_road_type()    
 
     # To choose sth user have to know about "sth's" representation
     def __str__(self):

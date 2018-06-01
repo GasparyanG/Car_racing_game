@@ -1,0 +1,1 @@
+list_of_road_types = ["Autumn", "Winter"]

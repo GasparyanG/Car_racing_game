@@ -41,9 +41,9 @@ class FastCarBaseCase(BaseCaseEngineOfCar):
 
 class BaseCaseForBeginner(BaseCaseEngineOfCar):
     def __init__(self):
-
         self.maximum_speed_of_car = 150
         self.model = "Opel"
+
     def turn_left(self):
         return 25
 

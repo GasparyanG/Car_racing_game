@@ -36,7 +36,6 @@ class DictionaryImplementor(DataStructureImplementor):
         return self.data_structure    
 
 
-
 class ListImplementor(DataStructureImplementor):
     def is_used(self):
         return type(self.data_structure) == list

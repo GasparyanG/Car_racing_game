@@ -19,6 +19,9 @@ class Road:
     
     def is_obsteacle(self, decorator):
         return self.obsteacle.is_obsteacle(decorator)
+
+    def retur_road_type(self):
+        return self.road_type.road_type    
  
     def __str__(self):
         representataion = self.road_type.__str__()

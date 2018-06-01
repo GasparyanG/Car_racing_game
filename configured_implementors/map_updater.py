@@ -12,7 +12,7 @@ class Updater:
 
 class UpdaterInHardRoad(Updater):
     def update(self, speed, wheel_type):
-        if self.map.type == wheel_type:
+        if self.map.return_road_type() == wheel_type:
             self.map.length = self.map.length - speed
 
         else:
