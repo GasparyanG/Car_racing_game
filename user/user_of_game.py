@@ -11,8 +11,11 @@ class User:
     def set_standards_for_beginners(self, new_standards):
         # new standards will be an abstract factory holding multiaple products
         self.car = new_standards.give_me_a_car()
-        self.garage = new_standards.give_me_a_garage()
-        self.pointss = new_standards.give_me_a_points()
+
+        garage = new_standards.give_me_a_garage()
+        self.garage = garage(self)
+
+        self.points = new_standards.give_me_a_points()
 
     def set_car(self, new_car):
         self.car = new_car
@@ -23,22 +26,22 @@ class User:
     def add_points(self, points):
         self.points = self.points + points              
         
-    def set_engine(self, new_engine):
+    def add_engine_to_garage(self, new_engine):
         # user don't need to be (is a: inheritance) a garage to
         # change engine instead user can have (has a: composition) garage 
         # implementing on its own         
-        pass
+        return self.garage.add_engine(new_engine)
 
     def update_car_engine(self, engine):
         self.car.update_engine(engine)    
 
     def add_new_car(self, new_car):
-        pass 
+        return self.garage.add_car(new_car)
 
     def add_new_wheel(self, new_wheel):
         # also the same situation:
         # composition over inheritance!
-        pass
+        return self.garage.add_wheel(new_wheel) 
 
     def give_me_current_car(self):
-       return self.car             
+        return self.car             

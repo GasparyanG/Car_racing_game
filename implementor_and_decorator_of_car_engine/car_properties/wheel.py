@@ -1,5 +1,3 @@
-# storage_of_road_types.py will help
-
 """
     wheel class have to be initialized to offer,
     for more informatin checkout ../garage/data_structure_implementor!
