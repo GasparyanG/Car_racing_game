@@ -18,7 +18,7 @@ class User:
         self.car = new_car
 
     def set_garage(self, new_garage):
-        self.garage = new_garage
+        self.garage = new_garage(self)
 
     def add_points(self, points):
         self.points = self.points + points              
@@ -29,10 +29,16 @@ class User:
         # implementing on its own         
         pass
 
+    def update_car_engine(self, engine):
+        self.car.update_engine(engine)    
+
     def add_new_car(self, new_car):
         pass 
 
     def add_new_wheel(self, new_wheel):
         # also the same situation:
         # composition over inheritance!
-        pass        
+        pass
+
+    def give_me_current_car(self):
+       return self.car             

@@ -5,7 +5,7 @@
 
 class Car:
     def __init__(self):
-        # self.car_wheel = None 
+        self.car_wheel = None 
         self.notifier = None
         self.map = None
         self.car_maximum_speed = None
@@ -40,8 +40,8 @@ class Car:
         self.car_maximum_speed = self.engine.maximum_speed_of_car
         self.car_model = self.engine.model  
 
-    # def set_wheel(self, new_wheel):
-    #     self.wheel = new_wheel
+    def set_wheel(self, new_wheel):
+        self.wheel = new_wheel
     
     def update_engine(self, new_futures):
         if self.map.is_obsteacle(new_futures):
