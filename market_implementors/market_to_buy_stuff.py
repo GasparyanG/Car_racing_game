@@ -1,8 +1,11 @@
+from market_implementors import buy_stuff_implementors
+
 class Market:
     def __init__(self, user):
         # user will hold a car
         # car will hold a map
         self.user = user 
+        self.buy_implementor = buy_stuff_implementors.BuyingStuff(self.user)
 
     def is_used(self, comparable_object):
         # human familiar indexing
@@ -10,5 +13,7 @@ class Market:
         return comparable_object == "2"
 
     def buy_stuff(self):
-        # buy stuff method have to have implementation
-        pass  
+        self.buy_implementor.buy()
+
+    def set_buy_implementor(self, new_implementor):
+        self.buy_implementor = new_implementor(self.user)    

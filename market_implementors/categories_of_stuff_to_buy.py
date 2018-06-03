@@ -1,5 +1,3 @@
-# think about comparable object (is it ment to be an integer?)
-
 from implementor_and_decorator_of_car_engine.car_properties import decorator_of_car_engine, wheel
 from implementor_and_decorator_of_car_engine import cars_to_offer
 
@@ -101,6 +99,7 @@ class Wheel(CategoriesOfStuff):
             user_choice = self.is_valid(user_choice, self.wheel_objects)
 
             if self.leave(user_choice):
+                # None will be returned
                 break
 
             if not user_choice:
@@ -175,3 +174,11 @@ class Car(CategoriesOfStuff):
             representation += "{}){}\n".format(index + 1, car.__str__())
 
         return [representation, list_of_cars]                      
+
+
+class Leave(CategoriesOfStuff):
+    def  is_used(self, comparable_object):
+        return comparable_object == 4
+
+    def buy(self):
+        return True        
