@@ -9,7 +9,8 @@ class Car:
         self.notifier = None
         self.map = None
         self.car_maximum_speed = None
-        self.car_model = None 
+        self.car_model = None
+        self.price = None 
         self.engine = None
         self.problems = 0
     
@@ -37,6 +38,7 @@ class Car:
 
     def set_car_base_engine(self, base_engine):
         self.engine = base_engine
+        self.price = self.engine.price
         self.car_maximum_speed = self.engine.maximum_speed_of_car
         self.car_model = self.engine.model  
 

@@ -1,1 +1,1 @@
-list_of_road_types = ["Autumn", "Winter"]
+dictionary_of_road_types = {"Autumn" : 200, "Winter" : 300}

@@ -9,4 +9,5 @@ class ImplementorOfBuying:
 class BuyingStuff(ImplementorOfBuying):
     def buy(self):
         while True:
+            # herre i have to offer products which i represented in market
             pass  

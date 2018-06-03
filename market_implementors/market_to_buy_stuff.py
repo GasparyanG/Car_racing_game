@@ -10,4 +10,5 @@ class Market:
         return comparable_object == "2"
 
     def buy_stuff(self):
+        # buy stuff method have to have implementation
         pass  

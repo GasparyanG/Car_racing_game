@@ -8,7 +8,8 @@ class EngineDecorator:
     def __init__(self):
         self.product_to_decorate = None
         self.update_power = None  
-
+        self.price = None
+ 
     def set_product_to_decorate(self, product):
         self.product_to_decorate = product
 
@@ -44,12 +45,15 @@ class EngineDecorator:
         representation = "Average increase of this engine is {}\n".format(self.update_power)
         if self.total_speed():
             representation += "Total speed is {}\n".format(self.total_speed())
+        
+        representation += "Price: {}\n".format(self.price)    
 
         return representation   
 
 class EnginePower(EngineDecorator):
     def __init__(self):
         super().__init__()
+        self.price = 100
         self.set_update_power() 
 
     def turn_left(self):
@@ -68,6 +72,7 @@ class EnginePower(EngineDecorator):
 class EngineSmoothness(EngineDecorator):
     def __init__(self):
         super().__init__()
+        self.price = 150
         self.set_update_power()
     
     def turn_left(self):

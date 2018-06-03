@@ -3,6 +3,11 @@
 # is based on recursion here is it's base case!  
 
 class BaseCaseEngineOfCar:
+    def __init__(self):
+        self.maximum_speed_of_car = None
+        self.model = None
+        self.price = None
+
     def turn_left(self):
         raise NotImplementedError()
 
@@ -20,6 +25,7 @@ class BaseCaseEngineOfCar:
 
     def __str__(self):
         representation = "Average speed of this engine is {}\n".format(self.total_speed())
+        representation += "Price: {}\n".format(self.price)
 
         return representation   
 
@@ -28,6 +34,7 @@ class FastCarBaseCase(BaseCaseEngineOfCar):
     def __init__(self):
         self.maximum_speed_of_car = 250
         self.model = "Ferrari"
+        self.price = 2000
 
     def turn_left(self):
         return 50
@@ -43,6 +50,7 @@ class BaseCaseForBeginner(BaseCaseEngineOfCar):
     def __init__(self):
         self.maximum_speed_of_car = 150
         self.model = "Opel"
+        self.price = 0
 
     def turn_left(self):
         return 25
@@ -58,6 +66,7 @@ class MediumCarBaseCase(BaseCaseEngineOfCar):
     def __init__(self):
         self.maximum_speed_of_car = 200
         self.model = "Audi"
+        self.price = 1500
     
     def turn_left(self):
         return 35
