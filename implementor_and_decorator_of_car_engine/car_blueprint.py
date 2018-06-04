@@ -15,19 +15,22 @@ class Car:
         self.problems = 0
     
     def turn_left(self):
+        side = "L"
         speed = self.engine.turn_left()      
-        self.notify(speed)   
+        self.notify(speed, side)   
 
     def drive_directly(self):
+        side = "D"
         speed = self.engine.drive_directly()
-        self.notify(speed)
+        self.notify(speed, side)
 
     def turn_right(self):
+        side = "R"
         speed = self.engine.turn_right()
-        self.notify(speed)
+        self.notify(speed, side)
 
-    def notify(self, speed):
-        self.notifier.notify(speed)
+    def notify(self, speed, side):
+        self.notifier.notify(speed, side)
 
     def set_map(self, new_map):
         self.map = new_map

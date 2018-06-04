@@ -1,5 +1,7 @@
+from map_of_the_race import factory_method, commands_to_iterator
+
 """
-    check out data structure module :
+    check out data structure module:
     update method needed to be a component of 
     data structure implementor 
     more precisely it must implement update method depending
@@ -13,34 +15,48 @@
 
 class Map:
     # I can define "abstract_factory"(i mean configure length and road type),
-    # but instead i will offer differnt length of road  
+    # but instead i will offer differnt length of road
 
     def __init__(self, length, road_type):
+        self.factory = factory_method.FactoryForCommands()
+        self.base_class = commands_to_iterator.Commands
         self.updater_of_map = None
         self.road_type = road_type
         self.length = length
-        self.data_structure = {"Left" : None, "Middle" : None, "Right" : None} 
+        self.iterator = None
+        # {"Left" : None, "Middle" : None, "Right" : None}
+        self.data_structure = None
 
     # think about self.road_type's data structure 
     def change_data_structure_state(self):
         self.data_structure = self.road_type.update_data_structure(self.data_structure)
 
+    def set_iterator(self, new_iterator):
+        self.iterator = new_iterator.give_me_iterator()
+        self.data_structure = new_iterator.give_me_data_structure() 
+
     def set_map_updater(self, new_abstract_factory):
         updater = new_abstract_factory.update_the_state()
         self.updater_of_map = updater(self)
 
-    def update_the_state(self, speed, wheel_type):
+    def update_the_state(self, speed, side, wheel_type):
+        # updater_of_map is already initialized  
         self.updater_of_map.update(speed, wheel_type)
+        
+        # side is needed to know what method of iterator to call!
+        generated_item_from_iterator = self.factory.create(side, self.base_class, self.iterator) 
+        
+        return generated_item_from_iterator
 
     def set_data_structure(self, data_structure):
         self.data_structure = data_structure
 
-    # True will be return if it is an obsteacle!
+    # True will be returned if it is an obsteacle!
     def is_obsteacle(self, decorator):
         return self.road_type.is_obsteacle(decorator)
 
     def return_road_type(self):
-        return self.road_type.return_road_type()    
+        return self.road_type.return_road_type()
 
     # To choose sth user have to know about "sth's" representation
     def __str__(self):
@@ -48,4 +64,4 @@ class Map:
         representation += "This map has {} sides of road\n".format(len(self.data_structure))
         representation += self.road_type.__str__()
 
-        return representation               
+        return representation
