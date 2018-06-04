@@ -59,3 +59,8 @@ class DictionaryIterator(Iterator):
             list_data_structure.append(self.data_structure[key])
 
         self.from_dictionary_to_list = list_data_structure
+
+    def give_me_current_road_side(self):
+        for index, key in enumerate(sorted(self.data_structure.keys())):
+            if index == self.current:
+                return key    

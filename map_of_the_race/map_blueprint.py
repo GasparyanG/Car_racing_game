@@ -58,6 +58,20 @@ class Map:
     def return_road_type(self):
         return self.road_type.return_road_type()
 
+    def show_what_is_going_on(self):
+        representation = "Distance to finish: {}\n".format(self.length)
+        representation += "You are know in {} side of road\n".format(self.iterator.give_me_current_road_side())
+        # i have to update data structure state first then represent below description to user!
+
+        for key in self.data_structure:
+            if type(self.data_structure[key]) == int:
+                representation += "{}: amount of points is {}\n".format(key, self.data_structure[key])
+
+            else:
+                representation += "{}: {}\n".format(key, self.data_structure[key].__str__())
+
+        return representation            
+
     # To choose sth user have to know about "sth's" representation
     def __str__(self):
         representation = "Length of this road is {}\n".format(self.length)
