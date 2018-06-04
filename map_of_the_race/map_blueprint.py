@@ -25,6 +25,7 @@ class Map:
         self.length = length
         self.iterator = None
         # {"Left" : None, "Middle" : None, "Right" : None}
+        # by injecting iterator (abstract factory) data structure also will be cahnged!
         self.data_structure = None
 
     # think about self.road_type's data structure 
