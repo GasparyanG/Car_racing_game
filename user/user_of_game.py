@@ -45,4 +45,10 @@ class User:
         return self.garage.add_wheel(new_wheel) 
 
     def give_me_current_car(self):
-        return self.car             
+        return self.car
+
+    def change_cars_map(self, new_map):
+        self.car.set_map(new_map)
+
+    def change_cars_notifier(self, new_notifier):
+        self.car.set_notifier(new_notifier)                 
