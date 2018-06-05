@@ -25,7 +25,7 @@ class EasyGame(GameComplexity):
         self.factory = factory_method.Factory()
 
     def is_used(self, comparable_object):
-        return comparable_object == "1"
+        return comparable_object == 1
 
     def execute(self):
         while True:
@@ -124,3 +124,11 @@ class EasyGame(GameComplexity):
         except ValueError:
             # by default there will be 5 oponents!
             return 4         
+
+
+class LeaveRace(GameComplexity):
+    def is_used(self, comparable_object):
+        return comparable_object == 2
+
+    def execute(self):
+        return True    
