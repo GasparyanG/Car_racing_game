@@ -1,3 +1,5 @@
+import random
+
 # If car's engine is fully updated don't let someone to waste money!
 
 # from configured_implementations import abstract_factory
@@ -5,6 +7,8 @@
 
 class Car:
     def __init__(self):
+        self.name = None 
+
         self.car_wheel = None 
         self.notifier = None
         self.map = None
@@ -14,23 +18,26 @@ class Car:
         self.engine = None
         self.problems = 0
     
+    def set_name_of_car(self, name):
+        self.name = name
+
     def turn_left(self):
         side = "L"
         speed = self.engine.turn_left()      
-        self.notify(speed, side)   
+        return self.notify(speed, side)   
 
     def drive_directly(self):
         side = "D"
         speed = self.engine.drive_directly()
-        self.notify(speed, side)
+        return self.notify(speed, side)
 
     def turn_right(self):
         side = "R"
         speed = self.engine.turn_right()
-        self.notify(speed, side)
+        return self.notify(speed, side)
 
     def notify(self, speed, side):
-        self.notifier.notify(speed, side)
+        return self.notifier.notify(speed, side)
 
     def set_map(self, new_map):
         self.map = new_map
@@ -47,7 +54,7 @@ class Car:
 
     def set_wheel(self, new_wheel):
         self.wheel = new_wheel
-    
+
     def update_engine(self, new_futures):
         if self.map.is_obsteacle(new_futures):
             self.problems += 1
@@ -61,6 +68,16 @@ class Car:
 
             else:
                 print("Your car is up to date!")
+
+    def random_own_method_calling(self):
+        list_of_methods = [self.turn_left, self.turn_right, self.drive_directly]
+
+        random_choice = random.choice(list_of_methods)
+
+        return random_choice()
+
+    def is_finished(self):
+        return self.map.is_finished()
 
     def __str__(self):
         representation = "Model: {}\n".format(self.car_model)

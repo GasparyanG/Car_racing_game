@@ -71,7 +71,14 @@ class Map:
             else:
                 representation += "{}: {}\n".format(key, self.data_structure[key].__str__())
 
-        return representation            
+        return representation
+
+    def is_finished(self):
+        if self.length <= 0:
+            return True
+
+        else:
+            False            
 
     # To choose sth user have to know about "sth's" representation
     def __str__(self):

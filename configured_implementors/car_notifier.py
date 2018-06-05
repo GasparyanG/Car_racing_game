@@ -7,8 +7,8 @@ class Notifier:
 
 class NotifierInHardRoad(Notifier):
     def notify(self, speed, side):
-        self.car.map.update_the_state(speed, side, self.car.wheel.type)
+        return self.car.map.update_the_state(speed, side, self.car.wheel.type)
 
 class NotifierInEasyRoad(Notifier):
     def notify(self, speed, side):
-        self.car.map.update_the_state(speed, side, None)    
+        return self.car.map.update_the_state(speed, side, None)    
