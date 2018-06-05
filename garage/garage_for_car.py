@@ -5,6 +5,7 @@ from garage import abstract_factory
 
 class Garage:
     def __init__(self, user):
+        self.name = "Garage"
         self.user = user
         self.configuratoin = abstract_factory.ConfigurationOfDictinaryTypes() 
         self.data_structure_impelementor = None

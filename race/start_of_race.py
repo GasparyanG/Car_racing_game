@@ -4,6 +4,7 @@ from race import race_complexity_implementor
 
 class Race:
     def __init__(self, user):
+        self.name = "Race"
         self.user = user
         self.offering_options = option_to_offer.OptionsToChoose()
         self.base_class = race_complexity_implementor.GameComplexity

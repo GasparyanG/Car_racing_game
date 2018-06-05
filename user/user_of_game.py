@@ -51,4 +51,7 @@ class User:
         self.car.set_map(new_map)
 
     def change_cars_notifier(self, new_notifier):
-        self.car.set_notifier(new_notifier)                 
+        self.car.set_notifier(new_notifier)
+
+    def give_me_current_garage(self):
+        return self.garage                     
