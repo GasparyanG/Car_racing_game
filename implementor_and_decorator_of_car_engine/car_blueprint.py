@@ -23,7 +23,7 @@ class Car:
 
     def turn_left(self):
         side = "L"
-        speed = self.engine.turn_left()      
+        speed = self.engine.turn_left()
         return self.notify(speed, side)   
 
     def drive_directly(self):
@@ -56,18 +56,18 @@ class Car:
         self.wheel = new_wheel
 
     def update_engine(self, new_futures):
-        if self.map.is_obsteacle(new_futures):
-            self.problems += 1
+        # if self.map.is_obsteacle(new_futures):
+        #     self.problems += 1
+        #     new_futures.set_product_to_decorate(self.engine)
+        #     self.engine = new_futures
+
+        # else:
+        if self.engine.drive_directly() + 4 < self.car_maximum_speed:
             new_futures.set_product_to_decorate(self.engine)
             self.engine = new_futures
 
         else:
-            if self.engine.drive_directly() + 4 < self.car_maximum_speed:
-                new_futures.set_product_to_decorate(self.engine)
-                self.engine = new_futures
-
-            else:
-                print("Your car is up to date!")
+            print("Your car is up to date!")
 
     def random_own_method_calling(self):
         list_of_methods = [self.turn_left, self.turn_right, self.drive_directly]
@@ -79,6 +79,9 @@ class Car:
     def is_finished(self):
         return self.map.is_finished()
 
+    def give_me_current_map(self):
+        return self.map
+    
     def __str__(self):
         representation = "Model: {}\n".format(self.car_model)
         representation += "Average speed: {}\n".format(self.engine.turn_left())

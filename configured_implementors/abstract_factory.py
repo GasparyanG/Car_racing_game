@@ -1,4 +1,4 @@
-import car_notifier, map_updater 
+from configured_implementors import car_notifier, map_updater 
 
 class AbstractFactory:
     def is_used(self, comparabel_obect):

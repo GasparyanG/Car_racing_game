@@ -36,7 +36,8 @@ class Garage:
 
     def set_abstract_factory(self, new_abstract_factory):
         # object will be returned
-        self.data_structure_impelementor = new_abstract_factory.give_me_data_structue()
+        self.data_structure_impelementor = new_abstract_factory.give_me_data_structure()
+        self.data_structure_impelementor.set_user(self.user)
         # this is still of its type
         user_friendly_execution = new_abstract_factory.give_me_interaction()
         self.user_friendly_execution = user_friendly_execution(self.data_structure_impelementor, self, self.user)    
@@ -46,7 +47,7 @@ class Garage:
         self.user_friendly_execution = new_execution(self.data_structure_impelementor, self, self.user)
 
     def set_data_structure_impelementor(self, new_implementor):
-        self.data_structure_impelementor = new_implementor
+        self.data_structure_impelementor = new_implementor.set_user(self.user)
 
     def add_engine(self, engine):
         return self.data_structure_impelementor.add_engine(engine)

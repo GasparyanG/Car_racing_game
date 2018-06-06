@@ -43,6 +43,8 @@ class Engine(CategoriesOfStuff):
 
     def buy(self):
         while True:
+            print("Amounts of your points: {}\n".format(self.user.points))
+
             info  = self.engines_representation()
 
             print(info[0])  
@@ -59,7 +61,7 @@ class Engine(CategoriesOfStuff):
             choosen_object = info[1][user_choice - 1]
 
             if self.user.points >= choosen_object.price:
-                is_bought = self.user.add_engine(choosen_object) 
+                is_bought = self.user.add_engine_to_garage(choosen_object) 
                 if is_bought:
                     print("You already bought this engine for this car!")
 
@@ -71,14 +73,17 @@ class Engine(CategoriesOfStuff):
 
     def engines_representation(self):
         list_of_engines_blueprint = self.car_engines_base_class.__subclasses__()
+        initialized_objects = []  
 
         representation = "If you want to leave type L\n"
         for index, engine in enumerate(list_of_engines_blueprint):
-            description_of_engine = engine().__str__()
+            engine_object = engine()
+            description_of_engine = engine_object.__str__()
+            initialized_objects.append(engine_object)
 
             representation += "{}){}\n".format(index + 1, description_of_engine)
 
-        return [representation, list_of_engines_blueprint]
+        return [representation, initialized_objects]
 
 
 class Wheel(CategoriesOfStuff):
@@ -93,14 +98,17 @@ class Wheel(CategoriesOfStuff):
         info = self.representataion_of_wheels()
 
         while True:
+            print("Amounts of your points: {}\n".format(self.user.points))
+            
             print(info)
             user_choice = input("Choose wheel of car by typing corresponding number: ")
             
-            user_choice = self.is_valid(user_choice, self.wheel_objects)
 
             if self.leave(user_choice):
                 # None will be returned
                 break
+            
+            user_choice = self.is_valid(user_choice, self.wheel_objects)
 
             if not user_choice:
                 print("Don't violate the requirements!")
@@ -109,7 +117,7 @@ class Wheel(CategoriesOfStuff):
             desired_wheel = self.wheel_objects[user_choice - 1]    
 
             if self.user.points >= desired_wheel.price:
-                if self.user.add_new_wheel():
+                if self.user.add_new_wheel(desired_wheel):
                     print("You already bought this wheel for this car!")
 
                 else:
@@ -142,6 +150,8 @@ class Car(CategoriesOfStuff):
         list_of_cars = info[1]
 
         while True:
+            print("Amounts of your points: {}\n".format(self.user.points))
+            
             print(representation)
             user_choice = input("Choose car by typing corresponding number: ")
 

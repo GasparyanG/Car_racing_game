@@ -24,6 +24,10 @@ class DeepImplementor:
     def execute(self):
         raise NotImplementedError()
 
+    def leave(self, user_choice):
+        if user_choice == "L" or user_choice == "l":
+            return True
+
 
 class CarOffer(DeepImplementor):
     def is_used(self, comparable_object):
@@ -36,9 +40,13 @@ class CarOffer(DeepImplementor):
 
         while True:
             print(cars_representation)
+            print("If you want to leave type L!")
             user_choice = input("Choose car by typing correspoinding number: ")
 
             user_choice = self.is_valid(user_choice, cars_list)
+
+            if self.leave(user_choice):
+                break
 
             if not user_choice:
                 print("Don't violate the requirements!")
@@ -55,11 +63,11 @@ class CarOffer(DeepImplementor):
         self.user.car = car            
                                 
     def representing_cars_in_data_structure(self):
-        data_sturcture = self.data_structure_implementor.data_structure
+        data_structure = self.data_structure_implementor.data_structure
 
         cars_representation = ""
         cars_list = []
-        for index, car in enumerate(data_sturcture):
+        for index, car in enumerate(data_structure):
             cars_representation += "{}){}\n".format(index + 1, car.__str__())
             cars_list.append(car)
 
@@ -74,12 +82,17 @@ class WheelOffer(DeepImplementor):
         users_current_car = self.user.give_me_current_car()
         info_about_wheels = self.representing_wheels_of_current_car(users_current_car)
 
-        wheels_representataion = info_about_wheels[0]
+        wheel_representation = info_about_wheels[0]
         wheels_list = info_about_wheels[1]
 
         while True:
-            print(wheels_representataion)
+            print(wheel_representation)
+            print("If you want to leave type L!")
+
             user_choice = input("Choose wheel by typing corresponding number: ")
+
+            if self.leave(user_choice):
+                break
 
             user_choice = self.is_valid(user_choice, wheels_list)  
             if not user_choice:
@@ -91,19 +104,20 @@ class WheelOffer(DeepImplementor):
             break
 
     def representing_wheels_of_current_car(self, users_current_car):
-        data_sturcture = self.data_structure_implementor.data_structure
-        
-        properties_of_car = data_sturcture[users_current_car]
+        data_structure = self.data_structure_implementor.data_structure
+        print(users_current_car)
+
+        properties_of_car = data_structure[users_current_car]
         wheels_of_car = properties_of_car[1]
 
-        wheels_representataion = ""
+        wheel_representation = ""
         wheels_list = []
 
         for index, wheel in enumerate(wheels_of_car):
-            wheels_representataion += "{}){}\n".format(index + 1, wheel.__str__())
+            wheel_representation += "{}){}\n".format(index + 1, wheel.__str__())
             wheels_list.append(wheel)
 
-        return [wheels_representataion, wheels_list]    
+        return [wheel_representation, wheels_list]    
 
     def change_wheel_on_current_car(self, user_choice, wheels_list, current_car):
         programming_common_index = user_choice - 1

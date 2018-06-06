@@ -67,7 +67,7 @@ class InteractionWithDictionary(UsersInteraction):
         
         # dictionary will store only one key : value pair
 
-        prompt_for_user = "Change if you want to or leave\n" 
+        prompt_for_user = "" 
         amount_of_operations = 0
         
         for index, key in enumerate(data_stucture_representation):

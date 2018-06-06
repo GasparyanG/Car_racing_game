@@ -41,12 +41,14 @@ class Map:
         self.updater_of_map = updater(self)
 
     def update_the_state(self, speed, side, wheel_type):
+        self.change_data_structure_state()
         # updater_of_map is already initialized  
         self.updater_of_map.update(speed, wheel_type)
         
         # side is needed to know what method of iterator to call!
-        generated_item_from_iterator = self.factory.create(side, self.base_class, self.iterator) 
-        
+        iterator_product = self.factory.create(side, self.base_class, self.iterator) 
+        generated_item_from_iterator = iterator_product.to_command(self.data_structure)
+
         return generated_item_from_iterator
 
     def set_data_structure(self, data_structure):
@@ -78,7 +80,10 @@ class Map:
             return True
 
         else:
-            False            
+            False
+
+    def give_me_side_of_road(self):
+        return self.iterator.give_me_current_road_side(self.data_structure)                    
 
     # To choose sth user have to know about "sth's" representation
     def __str__(self):

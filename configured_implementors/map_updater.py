@@ -26,7 +26,7 @@ class UpdaterInHardRoad(Updater):
 
 class UpdaterInEasyRoad(Updater):
     def update(self, speed, wheel_type):
-        self.map.lenght = self.map.length - speed
+        self.map.length = self.map.length - speed
 
     def set_complexity_type(self):
         self.type_of_complexity = "easy"

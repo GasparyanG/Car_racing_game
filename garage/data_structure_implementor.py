@@ -62,6 +62,7 @@ class DictionaryImplementor(DataStructureImplementor):
 
     def give_me_properties_of_car(self):
         current_car = self.user.car
+        
         properties_of_car = self.data_structure[current_car]
 
         return properties_of_car

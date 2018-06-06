@@ -57,8 +57,8 @@ class BotsForEasyGame(Bot):
         for bot_car in self.bot_cars:
             defined_map = self.define_map(length_of_road, road_type, configuration_of_iterator_and_data_structure)    
 
-            updater = self.easy_game.update_the_state()
-            notifier = self.easy_game.notify_about_changes()
+            updater = self.easy_game
+            notifier = self.easy_game
 
             defined_map.set_map_updater(updater)
             bot_car.set_notifier(notifier)

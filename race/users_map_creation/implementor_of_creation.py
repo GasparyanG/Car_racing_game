@@ -1,3 +1,4 @@
+from map_of_the_race.abstract_factory import ConfigurationOfDictionary
 # updater and notifier of observable pattern needed to be
 # configured in this scenario
 from configured_implementors import abstract_factory
@@ -21,7 +22,7 @@ class MapCreator:
 
         representation = ""
         for index, length in enumerate(list_of_lengths):
-            representation += "{}){}".format(index + 1, length)
+            representation += "{}){}\n".format(index + 1, length)
 
         while True:
             print(representation)
@@ -29,16 +30,17 @@ class MapCreator:
             
             user_choice_of_length = self.is_valid(user_choice_of_length, list_of_lengths)
             if not user_choice_of_length:
+                print("Don't violate the requirements!")
                 continue 
 
-            desired_length = list_of_lengths[user_choice_of_length]
+            desired_length = list_of_lengths[user_choice_of_length - 1]
             
             return desired_length
         
     def is_valid(self, user_choice, list_data_type):
         list_of_numbers = []
 
-        for number in range(len(list_of_numbers)):
+        for number in range(len(list_data_type)):
             list_of_numbers.append(number + 1)
 
         try:
@@ -68,21 +70,23 @@ class MapCreator:
                 print("Don't violate the requirements!")
                 continue
 
-            desired_configuration = list_of_objects[user_choice]
+            desired_configuration = list_of_objects[user_choice - 1]
 
-            road_type = self.road_type.set_new_abstract_factory(desired_configuration)
+            self.road_type.set_new_abstract_factory(desired_configuration)
 
-            return road_type
+            return self.road_type
 
 
 class MapCreatorForEasyGame(MapCreator):
     def __init__(self):
         super().__init__()
         self.easy_game = abstract_factory.EasyGame()
-    
+        # here i have to have iterator and data structure holding abstract factroy
+        self.configuration = ConfigurationOfDictionary()
+
     def define_users_cars_map(self, user):
         arguments_for_other_cars = [] 
-        arguments_for_other_cars.append(self.easy_game)
+        # arguments_for_other_cars.append(self.easy_game)
 
         desired_length = self.represent_lengths_of_road()
         arguments_for_other_cars.append(desired_length)
@@ -91,9 +95,14 @@ class MapCreatorForEasyGame(MapCreator):
         arguments_for_other_cars.append(road_type)
 
         defined_map = self.map(desired_length, road_type)
-        defined_map.set_map_updater(self.easy_game.update_the_state())
+        defined_map.set_map_updater(self.easy_game)
+
+        defined_map.set_iterator(self.configuration)
+        arguments_for_other_cars.append(self.configuration)
+
+        # iterator of cars' map is missing!
 
         user.change_cars_map(defined_map)
-        user.change_cars_notifier(self.easy_game.notify_about_changes())
+        user.change_cars_notifier(self.easy_game)
 
         return arguments_for_other_cars

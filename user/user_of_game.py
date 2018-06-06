@@ -10,10 +10,10 @@ class User:
 
     def set_standards_for_beginners(self, new_standards):
         # new standards will be an abstract factory holding multiaple products
-        self.car = new_standards.give_me_a_car()
-
         garage = new_standards.give_me_a_garage()
         self.garage = garage(self)
+
+        self.set_car(new_standards.give_me_a_car())
 
         self.points = new_standards.give_me_a_points()
 
@@ -49,6 +49,7 @@ class User:
 
     def change_cars_map(self, new_map):
         self.car.set_map(new_map)
+    
 
     def change_cars_notifier(self, new_notifier):
         self.car.set_notifier(new_notifier)

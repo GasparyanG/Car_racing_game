@@ -1,11 +1,11 @@
 import random
 
 class DataStructureImplementor:
-    def __init__(self, data_structure, obsteacle, points, game_complexity):
+    def __init__(self, data_structure, obsteacle, points):# , game_complexity):
         self.data_structure = data_structure
         self.obsteacle = obsteacle
         self.points = points
-        self.game_complexity = game_complexity
+        # self.game_complexity = game_complexity
 
     def is_used(self):
         raise NotImplementedError()

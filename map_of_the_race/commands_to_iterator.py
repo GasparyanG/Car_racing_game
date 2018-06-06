@@ -11,23 +11,23 @@ class Commands:
 
 class NextItem(Commands):
     def is_used(self, comparable_object):
-        return comparable_object == "L"
+        return comparable_object == "R"
 
-    def to_command(self):
-        return self.iterator.next_item()
+    def to_command(self, data_structure):
+        return self.iterator.next_item(data_structure)
 
 
 class CurrentItem(Commands):
     def is_used(self, comparable_object):
         return comparable_object == "D"
 
-    def to_command(self):
-        return self.iterator.current_item()
+    def to_command(self, data_structure):
+        return self.iterator.current_item(data_structure)
 
 
 class PreviousItem(Commands):
     def is_used(self, comparable_object):
-        return comparable_object == "R"
+        return comparable_object == "L"
 
-    def to_command(self):
-        return self.iterator.previous_item()    
+    def to_command(self, data_structure):
+        return self.iterator.previous_item(data_structure)    

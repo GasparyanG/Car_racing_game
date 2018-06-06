@@ -53,7 +53,7 @@ class EngineDecorator:
 class EnginePower(EngineDecorator):
     def __init__(self):
         super().__init__()
-        self.price = 100
+        self.price = 150
         self.set_update_power() 
 
     def turn_left(self):
@@ -72,7 +72,7 @@ class EnginePower(EngineDecorator):
 class EngineSmoothness(EngineDecorator):
     def __init__(self):
         super().__init__()
-        self.price = 150
+        self.price = 100
         self.set_update_power()
     
     def turn_left(self):

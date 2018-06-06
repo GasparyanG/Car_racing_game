@@ -16,6 +16,8 @@ class CarOffer:
         list_of_cars = []
 
         for base_case in self.cars_base_cases():
-            list_of_cars.append(self.car_type().set_car_base_engine(base_case))
+            car = self.car_type()
+            car.set_car_base_engine(base_case())
+            list_of_cars.append(car)
 
         return list_of_cars    

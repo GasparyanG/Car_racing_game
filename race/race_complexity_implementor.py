@@ -47,6 +47,8 @@ class EasyGame(GameComplexity):
         representation = self.representation_of_commands()
         
         while True:
+            print(self.what_is_going_on())              
+
             # user have to know what is going on:
             # distance left to finish (also for oponents)
             # amount of oponents
@@ -58,9 +60,15 @@ class EasyGame(GameComplexity):
             users_car = self.user.give_me_current_car()
             # factory will call commands on car object, which in its turn will call
             # maps corresponding method 
-            result_from_factory = self.factory.create(user_choice, self.commands, users_car)
+            command_object = self.factory.create(user_choice, self.commands, users_car)
             
+            if not command_object:
+                print("Don't violate the requirements!")
+                continue
+            
+            result_from_factory = command_object.to_command()
             if not result_from_factory:
+                print("Don't violate the requirements!")
                 continue
 
             elif type(result_from_factory) == int:
@@ -93,7 +101,7 @@ class EasyGame(GameComplexity):
 
         representation = ""
         for command in commands:
-            command = command()
+            command = command(self.user.give_me_current_car())
             representation += "{}\n".format(command.__str__())
 
         return representation     
@@ -124,6 +132,15 @@ class EasyGame(GameComplexity):
         except ValueError:
             # by default there will be 5 oponents!
             return 4         
+
+    def what_is_going_on(self):
+        car = self.user.give_me_current_car()
+        current_map = car.give_me_current_map()
+
+        representation = "Distance left: {}\n".format(current_map.length)
+        representation += "Side of the road, where you are at this moment: {}\n".format(current_map.give_me_side_of_road()) 
+
+        return representation
 
 
 class LeaveRace(GameComplexity):
