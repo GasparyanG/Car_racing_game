@@ -19,6 +19,7 @@ class User:
 
     def set_car(self, new_car):
         self.car = new_car
+        self.car.name = self.username
         self.add_new_car(new_car)
 
     def set_garage(self, new_garage):

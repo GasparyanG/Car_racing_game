@@ -26,7 +26,6 @@ class DictionaryIterator(Iterator):
     def next_item(self, dictionary):
         self.convert_dictionary_to_list(dictionary)
 
-        print(self.current)
         self.has_next()
         return self.from_dictionary_to_list[self.current] 
 
@@ -40,7 +39,6 @@ class DictionaryIterator(Iterator):
         self.convert_dictionary_to_list(dictionary)
 
         self.has_previous()
-        print(self.current)
         return self.from_dictionary_to_list[self.current]
 
     def has_previous(self):
@@ -51,7 +49,6 @@ class DictionaryIterator(Iterator):
 
     def current_item(self, dictionary):
         self.convert_dictionary_to_list(dictionary)
-        print(self.current)
 
         return self.from_dictionary_to_list[self.current]        
 

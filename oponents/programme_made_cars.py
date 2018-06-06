@@ -73,6 +73,6 @@ class BotsForEasyGame(Bot):
     def define_map(self, length_of_road, road_type, configuration_of_iterator_and_data_structure):
         defined_map = self.map(length_of_road, road_type)
 
-        defined_map.set_iterator(configuration_of_iterator_and_data_structure)
+        defined_map.set_iterator(configuration_of_iterator_and_data_structure())
 
         return defined_map

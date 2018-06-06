@@ -82,7 +82,7 @@ class MapCreatorForEasyGame(MapCreator):
         super().__init__()
         self.easy_game = abstract_factory.EasyGame()
         # here i have to have iterator and data structure holding abstract factroy
-        self.configuration = ConfigurationOfDictionary()
+        self.configuration = ConfigurationOfDictionary
 
     def define_users_cars_map(self, user):
         arguments_for_other_cars = [] 
@@ -97,11 +97,14 @@ class MapCreatorForEasyGame(MapCreator):
         defined_map = self.map(desired_length, road_type)
         defined_map.set_map_updater(self.easy_game)
 
-        defined_map.set_iterator(self.configuration)
-        arguments_for_other_cars.append(self.configuration)
+        defined_map.set_iterator(self.configuration())
+
+        # others need to have own iterator
+        iteratort_for_others = self.configuration
+        arguments_for_other_cars.append(iteratort_for_others)
 
         # iterator of cars' map is missing!
-
+        
         user.change_cars_map(defined_map)
         user.change_cars_notifier(self.easy_game)
 

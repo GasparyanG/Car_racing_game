@@ -44,6 +44,8 @@ class EasyGame(GameComplexity):
                 break
 
     def process_of_race(self, bots):
+        print("Your oponents:")
+        print(self.representation_of_bots(bots))
         representation = self.representation_of_commands()
         
         while True:
@@ -83,6 +85,7 @@ class EasyGame(GameComplexity):
                 return True    
 
             for bot in bots:
+                print("{}:Distance left {}\n".format(bot.name, bot.map.length))
                 # print distance of road, which is left until finish.
                 bot.random_own_method_calling()
                 
@@ -141,6 +144,14 @@ class EasyGame(GameComplexity):
         representation += "Side of the road, where you are at this moment: {}\n".format(current_map.give_me_side_of_road()) 
 
         return representation
+
+    def representation_of_bots(self, bots):
+        representation = "" 
+
+        for index, bot in enumerate(bots):
+            representation += "{}){}\n".format(index + 1, bot.name)
+
+        return representation    
 
 
 class LeaveRace(GameComplexity):
