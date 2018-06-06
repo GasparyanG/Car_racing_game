@@ -1,1 +1,0 @@
-![CRG](https://goo.gl/images/FjAvug)
